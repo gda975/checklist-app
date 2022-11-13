@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View } from "react-native";
 
-const Task = () => {
+const Task = (props) => {
 	return (
 		<View>
-			<Text>Lorem ipsum dolor</Text>
+			<Text>{props.children || 'Untitled task'}</Text>
 		</View>
 	)
 }

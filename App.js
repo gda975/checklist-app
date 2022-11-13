@@ -7,8 +7,8 @@ export default function App() {
       <SafeAreaView style={styles.taskContainer}>
         <Text style={styles.header}>Todo</Text>
         <Task />
-        <Task />
-        <Task />
+        <Task>Finish app styling</Task>
+        <Task>Another task</Task>
       </SafeAreaView>
     </View>
   );
