@@ -1,10 +1,14 @@
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import Task from './components/Task.js';
 
 export default function App() {
   return (
     <View style={styles.container}>
       <SafeAreaView style={styles.taskContainer}>
         <Text style={styles.header}>Todo</Text>
+        <Task />
+        <Task />
+        <Task />
       </SafeAreaView>
     </View>
   );
