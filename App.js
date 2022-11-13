@@ -6,9 +6,11 @@ export default function App() {
     <View style={styles.container}>
       <SafeAreaView style={styles.taskContainer}>
         <Text style={styles.header}>Todo</Text>
-        <Task />
-        <Task>Finish app styling</Task>
-        <Task>Another task</Task>
+        <View style={styles.taskList}>
+          <Task />
+          <Task>Finish app styling</Task>
+          <Task>Another task</Task>
+        </View>
       </SafeAreaView>
     </View>
   );
@@ -26,5 +28,8 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 30,
     fontWeight: 'bold',
+  },
+  taskList: {
+    marginTop: 20,
   }
 });
