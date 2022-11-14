@@ -12,12 +12,23 @@ export default function App() {
     setTask(null)
   }
 
+  const completeTask = (index) => {
+    let itemsCopy = [...taskList];
+    itemsCopy.splice(index, 1);
+    setTaskList(itemsCopy)
+  }
+
   return (
     <View style={styles.container}>
       <SafeAreaView style={styles.taskContainer}>
         <Text style={styles.header}>Todo</Text>
         <View style={styles.taskList}>
-          {taskList.map((e, index) => {return (<Task key={index}>{e}</Task>)})}
+          {taskList.map((e, index) => 
+            {return (
+              <TouchableOpacity key={index} onPress={() => completeTask(index)}>
+                <Task>{e}</Task>
+              </TouchableOpacity>
+            )})}
         </View>
       </SafeAreaView>
 			<KeyboardAvoidingView
@@ -26,6 +37,7 @@ export default function App() {
 					<TextInput 
             style={styles.textinput} 
             placeholder='Add task' 
+            value={task}
             onChangeText={text => setTask(text)}/>
           <TouchableOpacity onPress={() => addTask()}>
             <View style={styles.addButton}>
