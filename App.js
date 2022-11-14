@@ -1,22 +1,33 @@
-import { KeyboardAvoidingView, SafeAreaView, StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { useState } from 'react';
+import { KeyboardAvoidingView, SafeAreaView, StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard } from 'react-native';
 import Task from './components/Task.js';
 
 export default function App() {
+  const [task, setTask] = useState();
+  const [taskList, setTaskList] = useState([]);
+
+  const addTask = () => {
+    Keyboard.dismiss()
+    setTaskList([...taskList, task])
+    setTask(null)
+  }
+
   return (
     <View style={styles.container}>
       <SafeAreaView style={styles.taskContainer}>
         <Text style={styles.header}>Todo</Text>
         <View style={styles.taskList}>
-          <Task />
-          <Task>Finish app styling</Task>
-          <Task>Another task</Task>
+          {taskList.map((e, index) => {return (<Task key={index}>{e}</Task>)})}
         </View>
       </SafeAreaView>
 			<KeyboardAvoidingView
 				behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
 				style={styles.taskWriter}>
-					<TextInput style={styles.textinput} placeholder='Add task' />
-          <TouchableOpacity>
+					<TextInput 
+            style={styles.textinput} 
+            placeholder='Add task' 
+            onChangeText={text => setTask(text)}/>
+          <TouchableOpacity onPress={() => addTask()}>
             <View style={styles.addButton}>
               <Text style={styles.plus}>+</Text>
             </View>
